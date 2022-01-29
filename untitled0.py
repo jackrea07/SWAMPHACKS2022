@@ -1,9 +1,8 @@
-from pickle import TRUE
-from turtle import onclick
+
 import pandas as pd
 import streamlit as st
 from PIL import Image
-import re
+
 widget_values = {}
 
 image = Image.open('logo.png')
