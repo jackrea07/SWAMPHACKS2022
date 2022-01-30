@@ -163,8 +163,8 @@ dfSearch = df[df['INSTNM'] == search]
 if st.button('Search'):
     
     dfSearch.rename(columns = {"INSTNM":"Institution", "STABBR":"State", "INSTURL":"Website", "ACTCMMID" : "ACT Average","ADM_RATE": "Admissions Rate", "CITY" : "City", "SAT_AVG" : "SAT Average" , 'UGDS' : 'Undergraduates','COSTT4_A' : "Expected Attendance Cost" }, inplace = True)
-    st.write(dfUse[['Institution','City','State','Website','ACT Average','SAT Average','Admissions Rate', 'Expected Attendance Cost', 'Undergraduates']])
-    st.map(dfUse)
+    st.write(dfSearch[['Institution','City','State','Website','ACT Average','SAT Average','Admissions Rate', 'Expected Attendance Cost', 'Undergraduates']])
+    
 
 
 
