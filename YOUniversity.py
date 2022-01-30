@@ -12,8 +12,10 @@ df = pd.read_csv("Cleaned_DataNames.csv")
 dfUse = df.copy()
 dfSearch = df.copy()
 st.image(image, caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
-st.title("Welcome to YOUniversity")
-options = st.multiselect('What do you look for in a school?', ['Location', 'SAT Score Range', 'ACT Score Range', 'HBCU', 'Male Only', 'Female Only', 'Offers Graduate Degrees', 'Total Cost Before Financial Aid', 'Desired Degree Category'])
+st.write("By: Rosario Firmino, Jonathon Goldberg, and Jack Rea")
+st.title("What do you look for in a school?")
+
+options = st.multiselect('Search',['Location', 'SAT Score Range', 'ACT Score Range', 'HBCU', 'Male Only', 'Female Only', 'Offers Graduate Degrees', 'Total Cost Before Financial Aid', 'Desired Degree Category'])
 #st.multiselect(options, list)
 
 
@@ -28,7 +30,7 @@ if 'SAT Score Range' in options:
 if 'ACT Score Range' in options :
     ACT =  st.slider('Desired School Average ACT Composite Score', min_value = 1, max_value = 36,value=(15,19))
     dfUse = dfUse[(dfUse['ACTCMMID'] > ACT[0]) & (dfUse['ACTCMMID'] < ACT[1]) ]
-if 'Total Cost Range Before Financial Aid' in options:
+if 'Total Cost Before Financial Aid' in options:
     cost = st.slider('Desired Cost Range)', max_value= 99999, min_value = 1,value=(20000,60000))
     dfUse = dfUse[(dfUse['COSTT4_A'] > cost[0]) & (dfUse['COSTT4_A'] > cost[0])]
 if 'HBCU' in options:
@@ -164,15 +166,6 @@ if st.button('Search'):
     
     dfSearch.rename(columns = {"INSTNM":"Institution", "STABBR":"State", "INSTURL":"Website", "ACTCMMID" : "ACT Average","ADM_RATE": "Admissions Rate", "CITY" : "City", "SAT_AVG" : "SAT Average" , 'UGDS' : 'Undergraduates','COSTT4_A' : "Expected Attendance Cost" }, inplace = True)
     st.write(dfSearch[['Institution','City','State','Website','ACT Average','SAT Average','Admissions Rate', 'Expected Attendance Cost', 'Undergraduates']])
-    
-
-
-
-
-
-
-
-
 
 
 
